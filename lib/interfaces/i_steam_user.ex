@@ -66,4 +66,16 @@ defmodule SteamEx.ISteamUser do
   def resolve_vanity_url(access_key, params \\ %{}, headers \\ %{}) do
     get(@interface <> "/ResolveVanityURL/v1/",  access_key, params, headers)
   end
+
+  @doc """
+  | Name         | Type   | Required | Description |
+  | key          | string | ✔       | Steamworks Web API user authentication key.|
+  | steamid      | uint64 | ✔       | SteamID of user |
+  | appid        | uint32 | ✔       | AppID to check for ownership |
+
+  See other: [https://partner.steamgames.com/doc/webapi/ISteamUser#CheckAppOwnership](https://partner.steamgames.com/doc/webapi/ISteamUser#CheckAppOwnership)
+  """
+  def check_app_ownership(access_key, params \\ %{}, headers \\ %{}) do
+    get(@interface <> "/CheckAppOwnership/v2/", access_key, params, headers)
+  end
 end
